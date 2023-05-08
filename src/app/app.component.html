@@ -1,0 +1,61 @@
+<div  class="container"></div>
+<h1> {{topic}}</h1><br><br>
+<div class="form-area">
+  <form #f="ngForm" (submit)="onSubmit(f)">
+
+    <div class="form-group">
+      <label>First name</label>
+    <input type="text"
+    placeholder="Name"
+    name="fullName"
+    ngModel
+     #fullName="ngModel"
+     (change)="getValue(fullName)"
+     required
+     class="form-control is-invalid"
+     [ngClass]="{'is-invalid':fullName.touched && fullName.invalid}"
+     minlength="5"
+     maxlength="10"/>
+
+     <div *ngIf="fullName.errors.required">
+     <div class="alert alert-danger-" *ngIf=" fullName.touched && fullName.invalid">Full Name is required </div>
+     </div>
+ </div>
+
+ <div class="form-group">
+  <label>E mail</label>
+<input type="email" placeholder="E-mail" [(ngModel)]="email" name="email" class="form-control"/><br><br>
+</div>
+
+ <div class="form-group">
+  <label>Address</label>
+<textarea name="address" id="" cols="30" rows="10" [(ngModel)]="address" class="form-control" name="address"></textarea><br><br>
+</div>
+
+ <!--<button (click)="addAUser()" type="submit" class="btn btn-primary">Submit</button>-->
+  </form>
+</div>
+
+
+
+
+<div class="show-area">
+  <div class="table-area">
+  <table [width]="500">
+    <thead>
+      <th>#</th>
+      <th>Name</th>
+      <th>E-mail</th>
+      <th>Address</th>
+      <th>Action</th>
+    </thead>
+  </table>
+  <tr *ngFor="let user of userArray; let index=index">
+  <td>{{index+1}}</td>
+  <td>{{user.name}}</td>
+  <td>{{user.email}}</td>
+  <td>{{user.address}}</td>
+  <td><button (click)="deleteUser(index)">Delete</button></td>
+</tr>
+  </div>
+</div>

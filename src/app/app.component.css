@@ -1,0 +1,12 @@
+.form-area{
+  margin-top: 50px;
+  text-align: center;
+}
+.show-area{
+  position: absolute;
+  left: 30%;
+}
+
+.form-control.ng-touched.ng-invalid{
+  border: 2px solid red;
+}
